@@ -71,7 +71,7 @@ namespace ProiectAStarAI
 
                 opened.Add(startCell);
 
-                Boolean pathFound = false;
+                bool pathFound = false;
 
                 do
                 {
@@ -124,13 +124,16 @@ namespace ProiectAStarAI
                         currentCell.col = cells[currentCell.row, currentCell.col].parent.col;
                         currentCell.row = tmp_row;
                     }
-
-                    //afisarea gridului
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("A aparut o eroare! Asigura-te ca toate campurile sunt completate si incearca din nou!");
+            }
+
+            for (int i = path.Count - 1; i >= 0; i--)
+            {
+                System.Console.Write("({0},{1})", path[i].row, path[i].col);
             }
         }
 
@@ -213,6 +216,8 @@ namespace ProiectAStarAI
         private void btnFindPath_Click(object sender, EventArgs e)
         {
             AStar();
+            PaintEventArgs pe = new PaintEventArgs(pictureGrid.CreateGraphics(), pictureGrid.ClientRectangle);
+            pictureGrid_Paint(sender, pe);
         }
 
         private void pictureGrid_Paint(object sender, PaintEventArgs e)
@@ -220,6 +225,7 @@ namespace ProiectAStarAI
             int squareSize = 20;
             Pen gridPen = Pens.Black;
             Pen wallPen = Pens.Red;
+            Pen pathPen = Pens.Blue;
 
             // Draw horizontal lines
             for (int y = 0; y <= pictureGrid.Height; y += squareSize)
@@ -243,6 +249,20 @@ namespace ProiectAStarAI
                 // Draw wall as a thick line
                 e.Graphics.DrawLine(wallPen, x, y, x + squareSize, y + squareSize);
                 e.Graphics.DrawLine(wallPen, x + squareSize, y, x, y + squareSize);
+            }
+
+            // Draw path
+            if (path != null)
+            {
+                for (int i = 0; i < path.Count - 1; i++)
+                {
+                    // Convert coordinates to pixels
+                    Point startPixel = new Point(path[i].row * squareSize + squareSize / 2, path[i].col * squareSize + squareSize / 2);
+                    Point endPixel = new Point(path[i + 1].row * squareSize + squareSize / 2, path[i + 1].col * squareSize + squareSize / 2);
+
+                    // Draw line between adjacent pixels
+                    e.Graphics.DrawLine(pathPen, startPixel, endPixel);
+                }
             }
         }
     }
