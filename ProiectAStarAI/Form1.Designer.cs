@@ -37,6 +37,8 @@
             textYF = new TextBox();
             btnFindPath = new Button();
             testText = new TextBox();
+            pictureGrid = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureGrid).BeginInit();
             SuspendLayout();
             // 
             // textBox1
@@ -115,7 +117,7 @@
             // 
             // btnFindPath
             // 
-            btnFindPath.Location = new Point(343, 214);
+            btnFindPath.Location = new Point(343, 242);
             btnFindPath.Name = "btnFindPath";
             btnFindPath.Size = new Size(89, 23);
             btnFindPath.TabIndex = 8;
@@ -125,16 +127,26 @@
             // 
             // testText
             // 
-            testText.Location = new Point(370, 114);
+            testText.Location = new Point(332, 301);
             testText.Name = "testText";
             testText.Size = new Size(100, 23);
             testText.TabIndex = 9;
+            // 
+            // pictureGrid
+            // 
+            pictureGrid.Location = new Point(272, 60);
+            pictureGrid.Name = "pictureGrid";
+            pictureGrid.Size = new Size(161, 161);
+            pictureGrid.TabIndex = 10;
+            pictureGrid.TabStop = false;
+            pictureGrid.Paint += pictureGrid_Paint;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureGrid);
             Controls.Add(testText);
             Controls.Add(btnFindPath);
             Controls.Add(textYF);
@@ -146,6 +158,7 @@
             Controls.Add(textBox1);
             Name = "Form1";
             Text = "AStarAI";
+            ((System.ComponentModel.ISupportInitialize)pictureGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -161,5 +174,6 @@
         private TextBox textYF;
         private Button btnFindPath;
         private TextBox testText;
+        private PictureBox pictureGrid;
     }
 }
