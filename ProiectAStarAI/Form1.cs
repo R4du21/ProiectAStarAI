@@ -1,10 +1,3 @@
-
-
-using System.Drawing.Design;
-using System.Reflection.PortableExecutable;
-using System.Security.Cryptography.X509Certificates;
-using System.Windows.Forms;
-
 namespace ProiectAStarAI
 {
     public partial class Form1 : Form
