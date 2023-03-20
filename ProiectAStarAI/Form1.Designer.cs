@@ -36,8 +36,11 @@
             textXF = new TextBox();
             textYF = new TextBox();
             btnFindPath = new Button();
-            testText = new TextBox();
+            pathText = new TextBox();
             pictureGrid = new PictureBox();
+            textBox4 = new TextBox();
+            textBox5 = new TextBox();
+            costText = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureGrid).BeginInit();
             SuspendLayout();
             // 
@@ -125,29 +128,69 @@
             btnFindPath.UseVisualStyleBackColor = true;
             btnFindPath.Click += btnFindPath_Click;
             // 
-            // testText
+            // pathText
             // 
-            testText.Location = new Point(332, 301);
-            testText.Name = "testText";
-            testText.Size = new Size(100, 23);
-            testText.TabIndex = 9;
+            pathText.Location = new Point(222, 291);
+            pathText.Name = "pathText";
+            pathText.ReadOnly = true;
+            pathText.Size = new Size(354, 23);
+            pathText.TabIndex = 9;
             // 
             // pictureGrid
             // 
-            pictureGrid.Location = new Point(272, 60);
+            pictureGrid.Location = new Point(302, 57);
             pictureGrid.Name = "pictureGrid";
             pictureGrid.Size = new Size(161, 161);
             pictureGrid.TabIndex = 10;
             pictureGrid.TabStop = false;
             pictureGrid.Paint += pictureGrid_Paint;
             // 
+            // textBox4
+            // 
+            textBox4.BackColor = SystemColors.Menu;
+            textBox4.BorderStyle = BorderStyle.None;
+            textBox4.Font = new Font("Arial Narrow", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox4.Location = new Point(151, 299);
+            textBox4.Name = "textBox4";
+            textBox4.ReadOnly = true;
+            textBox4.ShortcutsEnabled = false;
+            textBox4.Size = new Size(65, 15);
+            textBox4.TabIndex = 11;
+            textBox4.TabStop = false;
+            textBox4.Text = "Calea gasita:";
+            // 
+            // textBox5
+            // 
+            textBox5.BackColor = SystemColors.Menu;
+            textBox5.BorderStyle = BorderStyle.None;
+            textBox5.Font = new Font("Arial Narrow", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox5.Location = new Point(184, 330);
+            textBox5.Name = "textBox5";
+            textBox5.ReadOnly = true;
+            textBox5.ShortcutsEnabled = false;
+            textBox5.Size = new Size(32, 15);
+            textBox5.TabIndex = 12;
+            textBox5.TabStop = false;
+            textBox5.Text = "Cost:";
+            // 
+            // costText
+            // 
+            costText.Location = new Point(222, 328);
+            costText.Name = "costText";
+            costText.ReadOnly = true;
+            costText.Size = new Size(32, 23);
+            costText.TabIndex = 13;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(costText);
+            Controls.Add(textBox5);
+            Controls.Add(textBox4);
             Controls.Add(pictureGrid);
-            Controls.Add(testText);
+            Controls.Add(pathText);
             Controls.Add(btnFindPath);
             Controls.Add(textYF);
             Controls.Add(textXF);
@@ -173,7 +216,10 @@
         private TextBox textXF;
         private TextBox textYF;
         private Button btnFindPath;
-        private TextBox testText;
+        private TextBox pathText;
         private PictureBox pictureGrid;
+        private TextBox textBox4;
+        private TextBox textBox5;
+        private TextBox costText;
     }
 }

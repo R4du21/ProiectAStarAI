@@ -133,8 +133,10 @@ namespace ProiectAStarAI
 
             for (int i = path.Count - 1; i >= 0; i--)
             {
-                System.Console.Write("({0},{1})", path[i].row, path[i].col);
+                pathText.AppendText(string.Format("({0},{1})", path[i].row, path[i].col));
             }
+
+            costText.AppendText(string.Format("{0}", path.Count));
         }
 
         public bool IsWall(int row, int col)
@@ -227,40 +229,33 @@ namespace ProiectAStarAI
             Pen wallPen = Pens.Red;
             Pen pathPen = Pens.Blue;
 
-            // Draw horizontal lines
             for (int y = 0; y <= pictureGrid.Height; y += squareSize)
             {
                 e.Graphics.DrawLine(gridPen, 0, y, pictureGrid.Width, y);
             }
 
-            // Draw vertical lines
             for (int x = 0; x <= pictureGrid.Width; x += squareSize)
             {
                 e.Graphics.DrawLine(gridPen, x, 0, x, pictureGrid.Height);
             }
 
-            // Draw walls
             Point[] wallPositions = { new Point(1, 5), new Point(2, 2), new Point(4, 0), new Point(5, 5), new Point(6, 6) };
             foreach (Point wallPos in wallPositions)
             {
                 int x = wallPos.X * squareSize;
                 int y = wallPos.Y * squareSize;
 
-                // Draw wall as a thick line
                 e.Graphics.DrawLine(wallPen, x, y, x + squareSize, y + squareSize);
                 e.Graphics.DrawLine(wallPen, x + squareSize, y, x, y + squareSize);
             }
 
-            // Draw path
             if (path != null)
             {
                 for (int i = 0; i < path.Count - 1; i++)
                 {
-                    // Convert coordinates to pixels
                     Point startPixel = new Point(path[i].row * squareSize + squareSize / 2, path[i].col * squareSize + squareSize / 2);
                     Point endPixel = new Point(path[i + 1].row * squareSize + squareSize / 2, path[i + 1].col * squareSize + squareSize / 2);
 
-                    // Draw line between adjacent pixels
                     e.Graphics.DrawLine(pathPen, startPixel, endPixel);
                 }
             }
