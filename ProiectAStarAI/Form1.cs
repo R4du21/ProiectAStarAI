@@ -136,7 +136,7 @@ namespace ProiectAStarAI
                 pathText.AppendText(string.Format("({0},{1})", path[i].row, path[i].col));
             }
 
-            costText.AppendText(string.Format("{0}", path.Count));
+            costText.AppendText(string.Format("{0}", path.Count - 1));
         }
 
         public bool IsWall(int row, int col)
