@@ -249,7 +249,7 @@ namespace ProiectAStarAI
                 e.Graphics.DrawLine(wallPen, x + squareSize, y, x, y + squareSize);
             }
 
-            if (path != null)
+            if (path.Count > 0)
             {
                 for (int i = 0; i < path.Count - 1; i++)
                 {
